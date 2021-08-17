@@ -6,9 +6,21 @@ import { AppView } from '../components';
 
 export const EffectDetails = ({ route, navigation }) => {
     const { effectName } = route.params;
+    const ingredients = [
+        { id: 1, name: 'Briar Heart' },
+        { id: 3, name: 'Deadra Heart' },
+        { id: 5, name: 'Troll Fat' }
+    ]
     return (
         <AppView>
             <Text style={general.text}>{effectName}</Text>
+            {ingredients.map((ingredient, index) => <Button 
+                key={index}
+                onPress={() => navigation.navigate('IngredientDetails', { ingredientId: ingredient.id, ingredientName: ingredient.name})}
+                title={ingredient.name}
+                accessibilityLabel={ingredient.name}
+                />)
+            }
         </AppView>
     );
 };

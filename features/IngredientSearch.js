@@ -1,7 +1,9 @@
 import React from "react";
-import { AppView, ElementList } from '../components';
+import PropTypes from 'prop-types';
+import { AppView, ListItem } from '../components';
+import { FlatList } from 'react-native';
 
-export const IngredientSearch = () => {
+export const IngredientSearch = ({navigation}) => {
     const ingredients = [
         { id: 1, name: 'Briar Heart' },
         { id: 2, name: 'Beehive' },
@@ -12,7 +14,20 @@ export const IngredientSearch = () => {
 
     return (
         <AppView>
-            <ElementList items={ingredients}/>
+            <FlatList 
+                data={ingredients}
+                renderItem={({item}) => 
+                <ListItem 
+                key={item.id} 
+                title={item.name} 
+                clickHandler={() => navigation.navigate('IngredientDetails', { ingredientId: item.id, ingredientName: item.name})} 
+            />}
+            />
         </AppView>
     );
 }
+
+IngredientSearch.propTypes = {
+    /** React navigation object for navigating between features */
+    navigation: PropTypes.object
+};

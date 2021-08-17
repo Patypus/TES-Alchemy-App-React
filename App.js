@@ -1,6 +1,5 @@
 import React from 'react';
-import * as navigation from './constants/navigationConstants';
-import { EffectSearch, IngredientSearch, MainMenu } from './features';
+import { EffectDetails, EffectSearch, IngredientSearch, IngredientDetails, MainMenu } from './features';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -10,7 +9,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name={navigation.Home} component={MainMenu}/>
+        <Stack.Screen name={'Home'} component={MainMenu}/>
         <Stack.Screen 
           name='EffectSearch' 
           component={EffectSearch} 
@@ -19,6 +18,14 @@ const App = () => {
           name='IngredientSearch'
           component={IngredientSearch}
           options={{ title: 'Ingredient Search' }}/>
+        <Stack.Screen 
+          name='EffectDetails'
+          component={EffectDetails}
+          options={{ title: 'Effect' }}/>
+        <Stack.Screen 
+          name='IngredientDetails'
+          component={IngredientDetails}
+          options={{ title: 'Details' }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

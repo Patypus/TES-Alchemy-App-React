@@ -1,4 +1,4 @@
 import { AppView } from './AppView';
-import { ElementList } from './ElementList';
+import { ListItem } from './ListItem';
 
-export { AppView, ElementList };
+export { AppView, ListItem };

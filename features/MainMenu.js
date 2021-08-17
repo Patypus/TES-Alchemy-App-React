@@ -2,7 +2,6 @@ import React from "react";
 import { Text, Button } from 'react-native';
 import { general } from '../branding/styles';
 import { AppView } from '../components';
-import * as navigationConsts from '../constants/navigationConstants';
 import PropTypes from 'prop-types';
 
 export const MainMenu = ({navigation}) => {

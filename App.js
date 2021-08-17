@@ -1,25 +1,27 @@
-import React from "react";
-import { MainMenu } from './features';
-import { View, StyleSheet } from 'react-native';
-import { general } from './branding/styles';
-import { ElementList } from './components/ElementList';
+import React from 'react';
+import * as navigation from './constants/navigationConstants';
+import { EffectSearch, IngredientSearch, MainMenu } from './features';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <View style={wrapper}>
-      <MainMenu/>
-      <ElementList/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name={navigation.Home} component={MainMenu}/>
+        <Stack.Screen 
+          name='EffectSearch' 
+          component={EffectSearch} 
+          options={{ title: 'Effect Search' }}/>
+        <Stack.Screen 
+          name='IngredientSearch'
+          component={IngredientSearch}
+          options={{ title: 'Ingredient Search' }}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    
-  },
-});
-
-const wrapper = StyleSheet.compose(styles.container, general.background);

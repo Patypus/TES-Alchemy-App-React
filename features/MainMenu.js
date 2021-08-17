@@ -1,18 +1,21 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { Text, Button } from 'react-native';
 import { general } from '../branding/styles';
+import { AppView } from '../components';
+import * as navigationConsts from '../constants/navigationConstants';
+import PropTypes from 'prop-types';
 
-export const MainMenu = () => {
+export const MainMenu = ({navigation}) => {
     const searchByIngredient = () => {
-        debugger;
+        navigation.navigate('IngredientSearch');
     }
 
     const searchByEffect = () => {
-        debugger;
+        navigation.navigate('EffectSearch');
     }
 
     return (
-        <View>
+        <AppView>
             <Text style={general.text}>Skyrim Alchemy App</Text>
             <Text style={general.text}>Search for:</Text>
             <Button 
@@ -25,6 +28,11 @@ export const MainMenu = () => {
                 title='Ingredient'
                 accessibilityLabel='Search by Ingredient'
                 />
-        </View>
+        </AppView>
     )
 }
+
+MainMenu.propTypes = {
+    /** React navigation object for navigating between features */
+    navigation: PropTypes.object
+};

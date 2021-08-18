@@ -1,18 +1,13 @@
 import React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Pressable, Text, View } from 'react-native';
 import { general } from '../branding/styles';
 import PropTypes from 'prop-types';
 
 export const ListItem =({title, clickHandler}) => {
     return (
-        <View>
+        <Pressable style={general.listItem} onPress={clickHandler}>
             <Text style={general.text}>{title}</Text>
-            <Button 
-                onPress={clickHandler}
-                title={title}
-                accessibilityLabel={title}
-                />
-        </View>
+        </Pressable>
     )
 }
 

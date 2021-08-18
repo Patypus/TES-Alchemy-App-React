@@ -1,10 +1,11 @@
 import React from "react";
-import { Button } from 'react-native';
+import { Pressable, Text } from 'react-native';
+import { general } from '../branding/styles';
 
 export const HomeButton = ({navigation}) => {
-    return (<Button
-        title='Home'
-        accessibilityLabel='Home'
+    return (<Pressable
         onPress={() => navigation.navigate('Home')}
-    />)
+    >
+        <Text style={general.text}>Home</Text>
+    </Pressable>)
 }

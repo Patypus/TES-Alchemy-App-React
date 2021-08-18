@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, Button } from 'react-native';
+import { Text, Button, Pressable } from 'react-native';
 import { general } from '../branding/styles';
 import { AppView } from '../components';
 import PropTypes from 'prop-types';
 
-export const MainMenu = ({navigation}) => {
+export const MainMenu = ({ navigation }) => {
     const searchByIngredient = () => {
         navigation.navigate('IngredientSearch');
     }
@@ -15,18 +15,19 @@ export const MainMenu = ({navigation}) => {
 
     return (
         <AppView>
-            <Text style={general.text}>Skyrim Alchemy App</Text>
             <Text style={general.text}>Search for:</Text>
-            <Button 
+            <Pressable
                 onPress={searchByEffect}
-                title='Effect'
-                accessibilityLabel='Search by Effect'
-                />
-            <Button 
+                style={general.button}
+            >
+                <Text style={general.buttonText}>Effect</Text>
+            </Pressable>
+            <Pressable
                 onPress={searchByIngredient}
-                title='Ingredient'
-                accessibilityLabel='Search by Ingredient'
-                />
+                style={general.button}
+            >
+                <Text style={general.buttonText}>Ingredient</Text>
+            </Pressable>
         </AppView>
     )
 }

@@ -17,7 +17,7 @@ const App = () => {
         <Stack.Screen 
           name={'Home'} 
           component={MainMenu} 
-          options={{ title: 'Home' }}/>
+          options={{ title: 'Skyrim Alchemy Reference' }}/>
         <Stack.Screen 
           name='EffectSearch' 
           component={EffectSearch} 

@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import PropTypes from 'prop-types';
 import { Text, Button } from 'react-native';
 import { general } from '../branding/styles';
 import { AppView } from '../components';
+import { getIngredientsWithEffect, getDBConnection } from '../data/dbService';
 
 export const EffectDetails = ({ route, navigation }) => {
     const { effectName } = route.params;
-    const ingredients = [
-        { id: 1, name: 'Briar Heart' },
-        { id: 3, name: 'Deadra Heart' },
-        { id: 5, name: 'Troll Fat' }
-    ]
+    const [ingredientsWithEffect, setIngredientsWithEffect] = useState([]);
+
+    const loadData = useCallback(async () => {
+        const db = await getDBConnection();
+        const results = await getIngredientsWithEffect(db, effectName);
+        debugger;
+        setIngredientsWithEffect(results);
+    }, []);
+
+    useEffect(() => {
+        loadData();
+    }, [loadData]);
+
     return (
         <AppView>
             <Text style={general.text}>{effectName}</Text>
-            {ingredients.map((ingredient, index) => <Button 
+            {ingredientsWithEffect.map((ingredient, index) => <Button 
                 key={index}
-                onPress={() => navigation.navigate('IngredientDetails', { ingredientId: ingredient.id, ingredientName: ingredient.name})}
-                title={ingredient.name}
-                accessibilityLabel={ingredient.name}
+                onPress={() => navigation.navigate('IngredientDetails', { ingredientId: ingredient.IngredientId, ingredientName: ingredient.IngredientName})}
+                title={ingredient.IngredientName}
+                accessibilityLabel={ingredient.IngredientName}
                 />)
             }
         </AppView>

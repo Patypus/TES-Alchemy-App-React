@@ -1,21 +1,35 @@
-import React from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import PropTypes from 'prop-types';
 import { Text, Button } from 'react-native';
 import { general } from '../branding/styles';
 import { AppView } from '../components';
+import { getIngredientById, getDBConnection } from '../data/dbService';
 
 export const IngredientDetails = ({route, navigation, }) => {
     const { ingredientName, ingredientId } = route.params;
-    const effects = [
-        'Restore Stamina',
-        'Invisibility',
-        'Fortify Barter',
-        'Ravage Health'
-    ]
+    
+    const [loadedEffects, setLoadedEffects] = useState([]);
+
+    const loadData = useCallback(async () => {
+        const db = await getDBConnection();
+        const result = await getIngredientById(db, ingredientId);
+        effects = [
+            result.EffectOne,
+            result.EffectTwo,
+            result.EffectThree,
+            result.EffectFour
+        ]
+        setLoadedEffects(effects);
+    }, []);
+
+    useEffect(() => {
+        loadData();
+    }, [loadData]);
+
     return (
         <AppView>
             <Text style={general.text}>{ingredientName}</Text>
-            {effects.map((effect, index) => <Button 
+            {loadedEffects.map((effect, index) => <Button 
                 key={index}
                 onPress={() => navigation.navigate('EffectDetails', { effectName: effect})}
                 title={effect}

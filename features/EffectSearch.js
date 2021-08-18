@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import PropTypes from 'prop-types';
 import { AppView, ListItem } from '../components';
 import { FlatList } from 'react-native';
+import { getAllEffects, getDBConnection } from '../data/dbService';
 
 export const EffectSearch = ({navigation}) => {
-    const effects = [
-        { id: 1, name: 'Fortify Magika' },
-        { id: 2, name: 'Restore Stamina' },
-        { id: 3, name: 'Waterbreathing' },
-        { id: 4, name: 'Invisibility' },
-        { id: 5, name: 'Ravage Magika' }
-    ];
+    const [loadedEffects, setLoadedEffects] = useState([]);
+
+    const loadData = useCallback(async () => {
+        const db = await getDBConnection();
+        const results = await getAllEffects(db);
+        setLoadedEffects(results);
+    }, []);
+
+    useEffect(() => {
+        loadData();
+    }, [loadData]);
 
     return (
         <AppView>
             <FlatList 
-                data={effects}
+                data={loadedEffects}
                 renderItem={({item}) => 
                     <ListItem 
-                        key={item.id} 
-                        title={item.name} 
-                        clickHandler={() => navigation.navigate('EffectDetails', { effectName: item.name})} 
+                        key={item.EffectId} 
+                        title={item.EffectName} 
+                        clickHandler={() => navigation.navigate('EffectDetails', { effectName: item.EffectName})} 
                     />}
             />
         </AppView>

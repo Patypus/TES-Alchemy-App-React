@@ -21,11 +21,11 @@ export const EffectSearch = ({navigation}) => {
         <AppView>
             <FlatList 
                 data={loadedEffects}
+                keyExtractor={(item) => item.EffectId.toString()}
                 renderItem={({item}) => 
                     <ListItem 
-                        key={item.EffectId} 
-                        title={item.EffectName} 
-                        clickHandler={() => navigation.navigate('EffectDetails', { effectName: item.EffectName})} 
+                        title={item.EffectTitle} 
+                        clickHandler={() => navigation.navigate('EffectDetails', { effectName: item.EffectTitle})} 
                     />}
             />
         </AppView>

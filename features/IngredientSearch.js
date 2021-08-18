@@ -21,9 +21,9 @@ export const IngredientSearch = ({navigation}) => {
         <AppView>
             <FlatList 
                 data={loadedIngredients}
+                keyExtractor={(item) => item.IngredientId.toString()}
                 renderItem={({item}) => 
-                    <ListItem 
-                        key={item.IngredientId} 
+                    <ListItem
                         title={item.IngredientName} 
                         clickHandler={() => navigation.navigate('IngredientDetails', { ingredientId: item.IngredientId, ingredientName: item.IngredientName})} 
             />}

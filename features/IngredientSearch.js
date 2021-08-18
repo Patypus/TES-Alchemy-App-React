@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import PropTypes from 'prop-types';
 import { AppView, ListItem } from '../components';
 import { FlatList } from 'react-native';
+import { getAllIngredients, getDBConnection } from '../data/dbService';
 
 export const IngredientSearch = ({navigation}) => {
-    const ingredients = [
-        { id: 1, name: 'Briar Heart' },
-        { id: 2, name: 'Beehive' },
-        { id: 3, name: 'Deadra Heart' },
-        { id: 4, name: 'Red Mountain Flower' },
-        { id: 5, name: 'Troll Fat' }
-    ];
+    const [loadedIngredients, setLoadedIngredients] = useState([]);
+
+    const loadData = useCallback(async () => {
+        const db = await getDBConnection();
+        const results = await getAllIngredients(db);
+        setLoadedIngredients(results);
+    }, []);
+
+    useEffect(() => {
+        loadData();
+    }, [loadData]);
 
     return (
         <AppView>
             <FlatList 
-                data={ingredients}
+                data={loadedIngredients}
                 renderItem={({item}) => 
-                <ListItem 
-                key={item.id} 
-                title={item.name} 
-                clickHandler={() => navigation.navigate('IngredientDetails', { ingredientId: item.id, ingredientName: item.name})} 
+                    <ListItem 
+                        key={item.IngredientId} 
+                        title={item.IngredientName} 
+                        clickHandler={() => navigation.navigate('IngredientDetails', { ingredientId: item.IngredientId, ingredientName: item.IngredientName})} 
             />}
             />
         </AppView>

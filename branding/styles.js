@@ -20,4 +20,8 @@ export const general = StyleSheet.create({
     //     borderWidth: 1,
     //     borderColor: 'white'
     // }
+    header: {
+        backgroundColor: '#000',
+        alignItems: 'center'
+    }
 });

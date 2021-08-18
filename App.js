@@ -2,18 +2,25 @@ import React from 'react';
 import { EffectDetails, EffectSearch, IngredientSearch, IngredientDetails, MainMenu } from './features';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { general } from './branding/styles';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name={'Home'} component={MainMenu}/>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: general.header,
+          headerTintColor: '#fff'
+        }}>
+        <Stack.Screen 
+          name={'Home'} 
+          component={MainMenu} 
+          options={{ title: 'Home' }}/>
         <Stack.Screen 
           name='EffectSearch' 
           component={EffectSearch} 
-          options={{ title: 'Effect Search' }}/>
+          options={{ title: 'Effect Search'}}/>
         <Stack.Screen 
           name='IngredientSearch'
           component={IngredientSearch}
@@ -21,11 +28,11 @@ const App = () => {
         <Stack.Screen 
           name='EffectDetails'
           component={EffectDetails}
-          options={{ title: 'Effect' }}/>
+          options={({route}) => ({ title: route.params.effectName })}/>
         <Stack.Screen 
           name='IngredientDetails'
           component={IngredientDetails}
-          options={{ title: 'Details' }}/>
+          options={({route}) => ({ title: route.params.ingredientName })}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

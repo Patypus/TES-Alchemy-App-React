@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, Button, Pressable } from 'react-native';
+import { Text, Pressable, View } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { general } from '../branding/styles';
 import { AppView } from '../components';
 import PropTypes from 'prop-types';
@@ -15,7 +16,10 @@ export const MainMenu = ({ navigation }) => {
 
     return (
         <AppView>
-            <Text style={general.text}>Search for:</Text>
+            <View style={general.inline}>
+                <Icon name="search" size={20} color="#FFF" />
+                <Text style={general.text}> Search for:</Text>
+            </View>
             <Pressable
                 onPress={searchByEffect}
                 style={general.button}

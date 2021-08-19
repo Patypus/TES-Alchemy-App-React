@@ -57,5 +57,9 @@ export const general = StyleSheet.create({
     header: {
         backgroundColor: '#282828',
         alignItems: 'center'
+    },
+    inline: {
+        flexDirection: 'row',
+        flexWrap: 'wrap'
     }
 });

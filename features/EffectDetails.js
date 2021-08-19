@@ -12,7 +12,6 @@ export const EffectDetails = ({ route, navigation }) => {
     const loadData = useCallback(async () => {
         const db = await getDBConnection();
         const results = await getIngredientsWithEffect(db, effectName);
-        debugger;
         setIngredientsWithEffect(results);
     }, []);
 
@@ -25,9 +24,9 @@ export const EffectDetails = ({ route, navigation }) => {
             <Text style={general.text}>{effectName}</Text>
             {ingredientsWithEffect.map((ingredient, index) => <Button 
                 key={index}
-                onPress={() => navigation.navigate('IngredientDetails', { ingredientId: ingredient.IngredientId, ingredientName: ingredient.IngredientName})}
-                title={ingredient.IngredientName}
-                accessibilityLabel={ingredient.IngredientName}
+                onPress={() => navigation.navigate('IngredientDetails', { ingredientId: ingredient.id, ingredientName: ingredient.name})}
+                title={ingredient.name}
+                accessibilityLabel={ingredient.name}
                 />)
             }
         </AppView>

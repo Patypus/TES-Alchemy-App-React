@@ -13,13 +13,7 @@ export const IngredientDetails = ({route, navigation, }) => {
     const loadData = useCallback(async () => {
         const db = await getDBConnection();
         const result = await getIngredientById(db, ingredientId);
-        effects = [
-            result.EffectOne,
-            result.EffectTwo,
-            result.EffectThree,
-            result.EffectFour
-        ]
-        setLoadedEffects(effects);
+        setLoadedEffects(result.effects);
     }, []);
 
     useEffect(() => {

@@ -21,11 +21,11 @@ export const IngredientSearch = ({navigation}) => {
         <AppView>
             <FlatList 
                 data={loadedIngredients}
-                keyExtractor={(item) => item.IngredientId.toString()}
+                keyExtractor={(item) => item.id.toString()}
                 renderItem={({item}) => 
                     <ListItem
-                        title={item.IngredientName} 
-                        clickHandler={() => navigation.navigate('IngredientDetails', { ingredientId: item.IngredientId, ingredientName: item.IngredientName})} 
+                        title={item.name} 
+                        clickHandler={() => navigation.navigate('IngredientDetails', { ingredientId: item.id, ingredientName: item.name})} 
             />}
             />
         </AppView>

@@ -24,6 +24,7 @@ export const EffectSearch = ({navigation}) => {
                 style={general.list}
                 data={loadedEffects}
                 keyExtractor={(item) => item.id.toString()}
+                initialNumToRender={20}
                 renderItem={({item}) => 
                     <ListItem 
                         title={item.name} 

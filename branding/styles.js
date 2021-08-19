@@ -18,11 +18,11 @@ export const general = StyleSheet.create({
         elevation: 5,
         alignItems: 'flex-start',
         justifyContent: 'center',
-        paddingVertical: 6,
+        paddingVertical: 10,
         paddingHorizontal: 6,
         borderRadius: 4,
         width: '100%',
-        marginTop: 3
+        marginTop: 5
     },
     listText: {
         color: '#FFF',

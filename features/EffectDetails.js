@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { general } from '../branding/styles';
 import { AppView,  ListItem } from '../components';
 import { getIngredientsWithEffect, getDBConnection } from '../data/dbService';
@@ -22,12 +22,14 @@ export const EffectDetails = ({ route, navigation }) => {
     return (
         <AppView>
             <Text style={general.text}>{effectName}</Text>
-            {ingredientsWithEffect.map((ingredient, index) => <ListItem 
-                key={index}
-                title={ingredient.name}
-                onPress={() => navigation.navigate('IngredientDetails', { ingredientId: ingredient.id, ingredientName: ingredient.name})}
-                />)
-            }
+            <View style={general.list}>
+                {ingredientsWithEffect.map((ingredient, index) => <ListItem 
+                    key={index}
+                    title={ingredient.name}
+                    onPress={() => navigation.navigate('IngredientDetails', { ingredientId: ingredient.id, ingredientName: ingredient.name})}
+                    />)
+                }
+            </View>
         </AppView>
     );
 };

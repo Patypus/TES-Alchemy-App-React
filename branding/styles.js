@@ -9,9 +9,13 @@ export const general = StyleSheet.create({
     text: {
         color: '#FFF'
     },
+    list: {
+        width: '80%'
+    },
     listItem: {
-        backgroundColor: '#3A3A33',
-        elevation: 3,
+        backgroundColor: '#3D3D3D',
+        shadowColor: '#000000',
+        elevation: 5,
         alignItems: 'flex-start',
         justifyContent: 'center',
         paddingVertical: 6,
@@ -38,7 +42,8 @@ export const general = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 32,
         elevation: 3,
-        marginTop: 15
+        marginTop: 15,
+        width: '60%'
     },
     buttonText: {
         color: '#FFF',

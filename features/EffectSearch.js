@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { AppView, ListItem } from '../components';
 import { FlatList } from 'react-native';
 import { getAllEffects, getDBConnection } from '../data/dbService';
+import { general } from '../branding/styles';
 
 export const EffectSearch = ({navigation}) => {
     const [loadedEffects, setLoadedEffects] = useState([]);
@@ -20,6 +21,7 @@ export const EffectSearch = ({navigation}) => {
     return (
         <AppView>
             <FlatList 
+                style={general.list}
                 data={loadedEffects}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({item}) => 

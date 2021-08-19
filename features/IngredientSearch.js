@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { AppView, ListItem } from '../components';
 import { FlatList } from 'react-native';
 import { getAllIngredients, getDBConnection } from '../data/dbService';
+import { general } from '../branding/styles';
 
 export const IngredientSearch = ({navigation}) => {
     const [loadedIngredients, setLoadedIngredients] = useState([]);
@@ -20,6 +21,7 @@ export const IngredientSearch = ({navigation}) => {
     return (
         <AppView>
             <FlatList 
+                style={general.list}
                 data={loadedIngredients}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({item}) => 

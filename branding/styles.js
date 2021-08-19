@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const general = StyleSheet.create({
     background: {
-        backgroundColor: '#000',
+        backgroundColor: '#282828',
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -11,10 +11,24 @@ export const general = StyleSheet.create({
     },
     listItem: {
         backgroundColor: '#3A3A33',
+        elevation: 3,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        paddingVertical: 6,
+        paddingHorizontal: 6,
+        borderRadius: 4,
+        width: '100%',
+        marginTop: 3
+    },
+    listText: {
+        color: '#FFF',
+        fontSize: 18,
+        lineHeight: 21,
+        letterSpacing: 0.25
     },
     button: {
         borderRadius: 10,
-        backgroundColor: '#000',
+        backgroundColor: '#282828',
         color: '#FFF',
         borderStyle: 'solid',
         borderWidth: 1,
@@ -33,7 +47,7 @@ export const general = StyleSheet.create({
         letterSpacing: 0.25,
     },
     header: {
-        backgroundColor: '#000',
+        backgroundColor: '#282828',
         alignItems: 'center'
     }
 });

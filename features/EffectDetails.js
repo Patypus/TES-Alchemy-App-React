@@ -41,7 +41,9 @@ export const EffectDetails = ({ route, navigation }) => {
 
 EffectDetails.propTypes = {
     /** React navigation object for navigating between features */
-    navigation: PropTypes.object,
+    navigation: PropTypes.object.shape,
     /** React navigation object for the route to navigate to this component */
-    route: PropTypes.object
+    route: PropTypes.shape({
+        effectName: PropTypes.string.isRequired
+    })
 };

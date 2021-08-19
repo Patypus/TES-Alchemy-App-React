@@ -12,7 +12,8 @@ const App = () => {
       <Stack.Navigator
         screenOptions={{
           headerStyle: general.header,
-          headerTintColor: '#fff'
+          headerTintColor: '#fff',
+          headerTitleStyle: { letterSpacing: 0.25 }
         }}>
         <Stack.Screen 
           name={'Home'} 

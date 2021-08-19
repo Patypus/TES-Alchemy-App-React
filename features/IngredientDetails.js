@@ -44,7 +44,9 @@ IngredientDetails.propTypes = {
     navigation: PropTypes.object,
     /** React navigation object for the route to navigate to this component */
     route: PropTypes.shape({
-        ingredientId: PropTypes.number.isRequired,
-        ingredientName: PropTypes.string.isRequired
+        params: PropTypes.shape({
+            ingredientId: PropTypes.number.isRequired,
+            ingredientName: PropTypes.string.isRequired
+        })
     })
 };

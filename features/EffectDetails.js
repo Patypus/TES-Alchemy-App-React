@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { Text, FlatList } from 'react-native';
 import { general } from '../branding/styles';
 import { AppView, ListItem, Loading } from '../components';
 import { getIngredientsWithEffect, getDBConnection } from '../data/dbService';
@@ -26,14 +26,16 @@ export const EffectDetails = ({ route, navigation }) => {
             <Text style={general.text}>Ingredients with effect</Text>
             {loading ?
                 <Loading /> :
-                <View style={general.list}>
-                    {ingredientsWithEffect.map((ingredient, index) => <ListItem
-                        key={index}
-                        title={ingredient.name}
-                        onPress={() => navigation.navigate('IngredientDetails', { ingredientId: ingredient.id, ingredientName: ingredient.name })}
-                    />)
-                    }
-                </View>
+                <FlatList 
+                    style={general.list}
+                    data={ingredientsWithEffect}
+                    keyExtractor={(item, index) => index.toString()}
+                    renderItem={({ item }) => (
+                        <ListItem
+                            title={item.name}
+                            onPress={() => navigation.navigate('IngredientDetails', { ingredientId: item.id, ingredientName: item.name })}
+                    />
+                    )}/>
             }
         </AppView>
     );
@@ -41,9 +43,11 @@ export const EffectDetails = ({ route, navigation }) => {
 
 EffectDetails.propTypes = {
     /** React navigation object for navigating between features */
-    navigation: PropTypes.object.shape,
+    navigation: PropTypes.object,
     /** React navigation object for the route to navigate to this component */
     route: PropTypes.shape({
-        effectName: PropTypes.string.isRequired
+        params: PropTypes.shape({
+            effectName: PropTypes.string.isRequired
+        })
     })
 };

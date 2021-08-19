@@ -22,7 +22,7 @@ export const IngredientDetails = ({route, navigation, }) => {
 
     return (
         <AppView>
-            <Text style={general.text}>{ingredientName}</Text>
+            <Text style={general.text}>Effects</Text>
             <View style={general.list}>
                 {loadedEffects.map((effect, index) => <ListItem 
                     key={index}

@@ -7,7 +7,10 @@ export const general = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        color: '#FFF'
+        color: '#FFF',
+        fontSize: 18,
+        lineHeight: 21,
+        letterSpacing: 0.25
     },
     list: {
         width: '80%'
@@ -18,8 +21,8 @@ export const general = StyleSheet.create({
         elevation: 5,
         alignItems: 'flex-start',
         justifyContent: 'center',
-        paddingVertical: 10,
-        paddingHorizontal: 6,
+        paddingVertical: 12,
+        paddingHorizontal: 8,
         borderRadius: 4,
         width: '100%',
         marginTop: 5

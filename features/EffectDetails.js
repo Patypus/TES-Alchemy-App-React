@@ -21,7 +21,7 @@ export const EffectDetails = ({ route, navigation }) => {
 
     return (
         <AppView>
-            <Text style={general.text}>{effectName}</Text>
+            <Text style={general.text}>Ingredients with effect</Text>
             <View style={general.list}>
                 {ingredientsWithEffect.map((ingredient, index) => <ListItem 
                     key={index}

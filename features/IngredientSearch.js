@@ -25,7 +25,7 @@ export const IngredientSearch = ({navigation}) => {
                 renderItem={({item}) => 
                     <ListItem
                         title={item.name} 
-                        clickHandler={() => navigation.navigate('IngredientDetails', { ingredientId: item.id, ingredientName: item.name})} 
+                        onPress={() => navigation.navigate('IngredientDetails', { ingredientId: item.id, ingredientName: item.name})} 
             />}
             />
         </AppView>

@@ -1,8 +1,8 @@
 import React, { useEffect, useCallback, useState } from "react";
 import PropTypes from 'prop-types';
-import { Text, Button } from 'react-native';
+import { Text } from 'react-native';
 import { general } from '../branding/styles';
-import { AppView } from '../components';
+import { AppView, ListItem } from '../components';
 import { getIngredientById, getDBConnection } from '../data/dbService';
 
 export const IngredientDetails = ({route, navigation, }) => {
@@ -23,11 +23,10 @@ export const IngredientDetails = ({route, navigation, }) => {
     return (
         <AppView>
             <Text style={general.text}>{ingredientName}</Text>
-            {loadedEffects.map((effect, index) => <Button 
+            {loadedEffects.map((effect, index) => <ListItem 
                 key={index}
-                onPress={() => navigation.navigate('EffectDetails', { effectName: effect})}
                 title={effect}
-                accessibilityLabel={effect}
+                onPress={() => navigation.navigate('EffectDetails', { effectName: effect})}
                 />)
             }
         </AppView>

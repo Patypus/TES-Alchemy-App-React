@@ -25,7 +25,7 @@ export const EffectSearch = ({navigation}) => {
                 renderItem={({item}) => 
                     <ListItem 
                         title={item.name} 
-                        clickHandler={() => navigation.navigate('EffectDetails', { effectName: item.name})} 
+                        onPress={() => navigation.navigate('EffectDetails', { effectName: item.name})} 
                     />}
             />
         </AppView>

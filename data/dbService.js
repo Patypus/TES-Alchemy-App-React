@@ -39,7 +39,7 @@ export const getDBConnection = async () => {
 
 /** Ingredients */
 export const getAllIngredients = async (db) => {
-  const dbResults = await db.executeSql(`SELECT * FROM ${dbNames.ingredientTableName}`);
+  const dbResults = await db.executeSql(`SELECT * FROM ${dbNames.ingredientTableName} ORDER BY ${dbNames.ingredientName}`);
   return extractResultsFromDbResult(dbResults, mapIngredients);
 }
 
@@ -66,7 +66,7 @@ export const getIngredientsWithEffect = async (db, effectName) => {
 
 /** Effects */
 export const getAllEffects = async (db) => {
-  const dbResults = await db.executeSql(`SELECT * FROM ${dbNames.effectTableName}`);
+  const dbResults = await db.executeSql(`SELECT * FROM ${dbNames.effectTableName} ORDER BY ${dbNames.effectName}`);
   return extractResultsFromDbResult(dbResults, mapEffects);
 }
 

@@ -13,7 +13,8 @@ export const general = StyleSheet.create({
         letterSpacing: 0.25
     },
     list: {
-        width: '80%'
+        width: '80%',
+        marginBottom: 5
     },
     listItem: {
         backgroundColor: '#3D3D3D',
